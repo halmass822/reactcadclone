@@ -1,0 +1,17 @@
+.ReactCadClone {
+    margin: 1rem;
+    border-radius: 1rem;
+    border: 2px solid black;
+}
+
+.missionClock {
+    display: inline-flex;
+    margin: 0.5rem;
+    border: 4px solid black;
+    background-color: lightgray;
+    border-radius: 1rem;
+}
+
+.missionClock h1 {
+    margin: 1rem;
+}
