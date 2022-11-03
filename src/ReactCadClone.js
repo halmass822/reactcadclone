@@ -43,7 +43,6 @@ export default function ReactCadClone(props) {
             <div className="callViewer">
                 {creatingNewCall ? <NewCall addNewCall={addNewCall} /> : null /* <ExistingCall editExistingCall={}/>*/}
             </div>
-            <NewCall addNewCall={addNewCall}/>
             {/* <CurrentCalls /> */}
             {/* <CurrentUnits /> */}
         </div>

@@ -1,0 +1,50 @@
+.newCallForm {
+    width: 40%;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 2px solid black;
+}
+
+.newCallForm div {
+    margin: 0.25rem 0;
+}
+
+#callAddress, #callerAddress {
+    width: 100%;
+}
+
+.addressDiv, .CTAndPriority, .callerNameAndPhone {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+/* for creating a placeholder for callType <select> */
+/* see https://stackoverflow.com/questions/5805059/how-do-i-make-a-placeholder-for-a-select-box for details */
+option[value=""][disabled] {
+    display: none;
+  }
+
+.callBodyDiv, .callerAddressDiv {
+    display: flex;
+}
+
+.callBodyDiv textarea {
+    resize: none;
+}
+
+#callBody {
+    width: 100%;
+    height: 8rem;
+}
+
+.callerDetailsHeader {
+    margin: 1rem 0 0;
+    font-size: 1.15rem;
+}
+
+#createCallButton {
+    width: 100%;
+    margin-top: 0.25rem;
+}
