@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import MissionClock from "./components/MissionClock/MissionClock";
 import "./ReactCadClone.css";
-import NewCall from "./components/NewCall/NewCall";
+import CallViewer from "./components/CallViewer/CallViewer";
+import CallQueue from "./components/CallQueue/CallQueue";
+import UnitStatus from "./components/UnitStatus/UnitStatus";
+import {sampleCall, sampleCallTypes, sampleQueue, sampleUnits} from "./utils/sampleData"
 // import serverCall from "./utils/serverCall";
 
 export default function ReactCadClone(props) {
 
     const initialTime = new Date()
     const [mainMissionClock, setMainMissionClock] = useState(initialTime);
-    const [currentCalls, setCurrentCalls] = useState([]);
+    const [currentCalls, setCurrentCalls] = useState(sampleQueue);
     const [pollingRate, setPollingRate] = useState(2000);
-    //to determine if the user is currently creating a new call or viewing an existing one
-    //as one UI element will display both forms
-    const [creatingNewCall, setCreatingNewCall] = useState(true);
+    const [selectedCallDetails, setSelectedCallDetails] = useState(sampleCall);
+    const [callTypes, setCallTypes] = useState(sampleCallTypes);
+    const [units, setUnits] = useState(sampleUnits);
 
     const updateMissionClock = (input) => {
         setMainMissionClock(input);
@@ -32,19 +35,12 @@ export default function ReactCadClone(props) {
         }, pollingRate);
     }, [pollingRate, currentCalls]);
 
-    const addNewCall = (newCall) => {
-        // serverCall.addNewCall(newCall);
-        setCurrentCalls((prev) => [...prev, newCall]);
-    }
-
     return(
         <div className="ReactCadClone">
             <MissionClock updateMissionClock={updateMissionClock}/>
-            <div className="callViewer">
-                {creatingNewCall ? <NewCall addNewCall={addNewCall} /> : null /* <ExistingCall editExistingCall={}/>*/}
-            </div>
-            {/* <CurrentCalls /> */}
-            {/* <CurrentUnits /> */}
+            <CallViewer  callTypes={callTypes} callDetails={selectedCallDetails}/>
+            <CallQueue currentCalls={currentCalls} />
+            <UnitStatus units={units} />
         </div>
     )
 }
